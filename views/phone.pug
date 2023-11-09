@@ -6,16 +6,11 @@ block content
   .container-fluid
     .row
       -
-        let results = [
-          { Phone_name:'Iphone', Phone_color :'Blue',Phone_cost:1000 },
-          { Phone_name:'Pixel', Phone_color:'pink',Phone_cost:2000  },
-          { Phone_name:'oppo', Phone_color:'White',Phone_cost:3000  }
-        ]
     each item in results
         .col-sm-2
             h3 Phone 
-            p #{item.Phone_name}, #{item.Phone_color},#{item.Phone_cost}
-            a(href='http://localhost:3000/', onclick=`buy(${index}`) Link to Index
+            p #{item.phone_name}, #{item.phone_color},#{item.phone_cost}
+            
 
   
 

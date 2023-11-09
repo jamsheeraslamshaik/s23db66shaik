@@ -26,3 +26,16 @@ exports.phone_delete = function (req, res) {
 exports.phone_update_put = function (req, res) {
     res.send('NOT IMPLEMENTED: Phone update PUT' + req.params.id);
 };
+exports.phone_view_all_Page = async function (req, res) {
+    try {
+      thePhone = await phone.find();
+      console.log(thePhone);
+      res.render("phone", {
+        title: "Phone Search Results",
+        results: thePhone
+      });
+    } catch (err) {
+      res.status(500);
+      res.send(`{"error": ${err}}`);
+    }
+  };
