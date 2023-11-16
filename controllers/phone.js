@@ -77,3 +77,72 @@ exports.phone_view_all_Page = async function (req, res) {
       res.send(`{"error": ${err}}`);
     }
   };
+  // Handle phone delete on DELETE.
+exports.phone_delete = async function(req, res) {
+  console.log("delete " + req.params.id)
+  try {
+  result = await phone.findByIdAndDelete( req.params.id)
+  console.log("Removed " + result)
+  res.send(result)
+  } catch (err) {
+  res.status(500)
+  res.send(`{"error": Error deleting ${err}}`);
+  }
+  };
+  
+ 
+  // Handle a show one view with id specified by query
+  exports.phone_view_one_Page = async function(req, res) {
+  console.log("single view for id " + req.query.id)
+  try{
+  result = await phone.findById( req.query.id)
+  res.render('phonedetail',
+  { title: 'phone Detail', toShow: result });
+  }
+  catch(err){
+  res.status(500)
+  res.send(`{'error': '${err}'}`);
+  }
+  };
+
+  // Handle building the view for creating a phone.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.phone_create_Page = function(req, res) {
+  console.log("create view")
+  try{
+  res.render('phonecreate', { title: 'Phone Create'});
+  }
+  catch(err){
+  res.status(500)
+  res.send(`{'error': '${err}'}`);
+  }
+  };
+
+  // Handle building the view for updating a phone.
+// query provides the id
+exports.phone_update_Page = async function(req, res) {
+  console.log("update view for item "+req.query.id)
+  try{
+  let result = await phone.findById(req.query.id)
+  res.render('phoneupdate', { title: 'Phone Update', toShow: result });
+  }
+  catch(err){
+  res.status(500)
+  res.send(`{'error': '${err}'}`);
+  }
+  };
+
+  // Handle a delete one view with id from query
+exports.phone_delete_Page = async function(req, res) {
+  console.log("Delete view for id " + req.query.id)
+  try{
+  result = await phone.findById(req.query.id)
+  res.render('phonedelete', { title: 'Phone Delete', toShow:
+  result });
+  }
+  catch(err){
+  res.status(500)
+  res.send(`{'error': '${err}'}`);
+  }
+  };

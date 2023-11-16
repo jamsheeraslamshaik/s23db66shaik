@@ -1,0 +1,39 @@
+extends layout
+block content
+  h1= title
+  - let phoneid = toShow._id
+  - let phone_color = toShow.phone_color
+  - let phonecost = toShow.phone_cost
+  - let phonesize = toShow.phone_name
+  div.row(class='mb-2')
+    div.mr-1 ID is
+    div #{phoneid}
+  - let actionid = "/resource/phone/" + phoneid
+  form(id='CostumeForm', action= actionid, method="PUT")
+    div.form-group
+      label.phoneAttr(for='phone_color') Costume type
+      input#phone_color(type='text', name='phone_color', value= phone_color, class= 'form-control' )
+    div.form-group
+      label.phoneAttr(for='size') Costume size
+      input#size(type='text', name='size', value= phonesize ,class= 'form-control')
+    div.form-group
+      label.phoneAttr(for='cost') Costume cost
+      input#cost(type='number', name='cost', value= phonecost ,class= 'form-control')
+    input(type="submit",class="btn btn-primary")
+  script.
+    document.forms['CostumeForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show the user that the form is being submitted
+      fetch(event.target.action, {
+        method: 'PUT',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Update succeeded");
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Update failed " + error );
+      });
+    });

@@ -8,14 +8,14 @@ var phone_controller = require('../controllers/phone');
 router.get('/', api_controller.api);
 /// COSTUME ROUTES ///
 // POST request for creating a Phone.
-router.post('/phones', phone_controller.phone_create_post);
+router.post('/phone', phone_controller.phone_create_post);
 // DELETE request to delete Phone.
-router.delete('/phones/:id', phone_controller.phone_delete);
+router.delete('/phone/:id', phone_controller.phone_delete);
 // PUT request to update Phone.
-router.put('/phones/:id', phone_controller.phone_update_put);
+router.put('/phone/:id', phone_controller.phone_update_put);
 // GET request for one Phone.
-router.get('/phones/:id', phone_controller.phone_detail);
+router.get('/phone/:id', phone_controller.phone_detail);
 // GET request for list of all Phone items.
-router.get('/phones', phone_controller.phone_list);
+router.get('/phone', phone_controller.phone_list);
 module.exports = router;
 

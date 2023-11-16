@@ -1,0 +1,21 @@
+
+extends layout
+block content
+ h1=title
+ - let phoneid = toShow._id
+ - let phone_type = toShow.phone_name
+ - let phonecost = toShow.phone_cost
+ - let phonesize = toShow.phone_color
+ div
+ div.row
+ div(class='phoneAttr mr-3') phone ID is:
+ div #{phoneid}
+ div.row
+ div(class='phoneAttr mr-3') phone_name is:
+ div #{phone_type}
+ div.row
+ div(class='phoneAttr mr-3') phone_color is:
+ div #{phonesize}
+ div.row
+ div(class='phoneAttr mr-3') phone_cost is:
+ div #{phonecost}

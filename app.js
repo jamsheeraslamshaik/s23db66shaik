@@ -42,7 +42,7 @@ app.use('/users', usersRouter);
 app.use('/phone', phoneRouter);
 app.use('/board', boardRouter);
 app.use('/choose', chooseRouter);
-app.use("/resource", resourceRouter)
+app.use('/resource', resourceRouter)
 // We can seed the collection if needed on
 //server start
 async function recreateDB() {
