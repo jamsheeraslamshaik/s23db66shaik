@@ -9,7 +9,9 @@ block content
     each item in results
         .col-sm-2
             h3 Phone 
+            - let destination = `dispatch(\"/phone/update?id=${item._id}\")`
             p #{item.phone_name}, #{item.phone_color},#{item.phone_cost}
+            button.btn( class="btn-primary ml-1", onclick= destination) Update
             
 
   
@@ -18,5 +20,10 @@ block content
      function buy(index) {
       alert(`You purchased item ${index+1}`);
      }
+     function dispatch(path){
+      window.location.href=path
+     }
+
+
 
   
