@@ -3,22 +3,22 @@ block content
   h1= title
   - let phoneid = toShow._id
   - let phone_color = toShow.phone_color
-  - let phonecost = toShow.phone_cost
-  - let phonesize = toShow.phone_name
+  - let phone_cost = toShow.phone_cost
+  - let phone_name = toShow.phone_name
   div.row(class='mb-2')
     div.mr-1 ID is
     div #{phoneid}
   - let actionid = "/resource/phone/" + phoneid
   form(id='CostumeForm', action= actionid, method="PUT")
     div.form-group
-      label.phoneAttr(for='phone_color') Costume type
-      input#phone_color(type='text', name='phone_color', value= phone_color, class= 'form-control' )
+      label.phoneAttr(for='phone_color') Phone type
+      input#phone_color(type='text', name='phone_name', value= phone_name, class= 'form-control' )
     div.form-group
-      label.phoneAttr(for='size') Costume size
-      input#size(type='text', name='size', value= phonesize ,class= 'form-control')
+      label.phoneAttr(for='size') Phone color
+      input#size(type='text', name='phone_color', value= phone_color ,class= 'form-control')
     div.form-group
-      label.phoneAttr(for='cost') Costume cost
-      input#cost(type='number', name='cost', value= phonecost ,class= 'form-control')
+      label.phoneAttr(for='cost') Phone cost
+      input#cost(type='number', name='phone_cost', value= phone_cost ,class= 'form-control')
     input(type="submit",class="btn btn-primary")
   script.
     document.forms['CostumeForm'].addEventListener('submit', (event) => {
